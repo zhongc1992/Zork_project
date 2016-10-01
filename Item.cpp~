@@ -1,0 +1,42 @@
+#include "Item.h"
+#include "rapidxml.hpp"
+#include "rapidxml_utils.hpp"
+#include "rapidxml_print.hpp"
+
+using namespace std;
+using namespace rapidxml;
+
+Item::Item(xml_node<> * node) {
+  for (xml_node<> *s = node->first_node();s;s = s->next_sibling()) {
+    string s_name = s->name();
+    string s_value = s->value();
+    if (s_name == "name") {
+      name = s_value;
+    } else if (s_name == "status") {
+      status = s_value;
+    } else if (s_name == "description") {
+      description = s_value;
+    } else if (s_name == "writing") {
+      writing = s_value;
+    } else if(s_name.compare("turnon") == 0){
+      //accept = s->value();
+      //Turnon turnon;
+      for (xml_node<> *p=s->first_node();p; p=p->next_sibling()){
+	string b_name = p->name();
+	string b_value = p->value();
+	if(b_name.compare("print") == 0){
+	  turnon.print = b_value;
+	}
+	else if(b_name.compare("action") == 0){
+	  turnon.actions.push_back(b_value);
+	}				
+      }	
+	       			
+    } /*else if(s_name.compare("trigger") == 0){
+
+      Trigger trigger(s);
+      triggers.push_back(trigger);
+      }*/
+
+  }
+}

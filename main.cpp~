@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <vector>
+#include <sstream>
+#include <fstream>
+#include <map>
+#include <algorithm>
+#include "rapidxml.hpp"
+
+#include "Container.h"
+#include "Trigger.h"
+#include "Room.h"
+#include "Creature.h"
+#include "Item.h"
+
+
+#include "rapidxml_utils.hpp"
+#include "rapidxml_print.hpp"
+
+
+using namespace std;
+using namespace rapidxml;
+
+bool Exit = false;
+
+/*map <string, Room> all_rooms;
+map <string, Item> all_items;
+map <string, Container> all_containers;
+map <string, Creature> all_creatures;
+map <string, Trigger> all_triggers;
+
+map <string, Room> aall_rooms;
+map <string, Item> aall_items;
+map <string, Container> aall_containers;
+map <string, Creature> aall_creatures;
+map <string, Trigger> aall_triggers;*/
+
+
+/*Room* getRoomFromMap(string name){
+  map <string, Room>::iterator p;
+  }*/
+
+int main (int argc, char ** argv) {
+  
+  //cout<<argv[1]<<endl;
+  xml_document<> doc;
+  ifstream file(argv[1]);//read the map.xml file
+  stringstream buffer;
+  buffer << file.rdbuf();
+  file.close();
+  string content(buffer.str());
+  //cout <<buffer.str()<<endl;
+  // cout <<content<<endl;
+  doc.parse<0>(&content[0]);
+  xml_node<> *pRoot = doc.first_node();//pRoot represents the map
+
+  string big_name;
+
+  for (xml_node<> *pNode = pRoot->first_node(); pNode; pNode = pNode->next_sibling()){
+    //pNode represents rooms,creatures and items
+      big_name = pNode->name();
+     
+
+      /*  xml_node<> *rNode = pNode->first_node();
+      big_name = rNode->name();
+      if (big_name == "name") {
+	cout << "Name is "<< big_name <<endl;
+	string big_value = rNode->value();
+	cout << "Value is "<<big_value<<endl;
+	}*/
+      if (big_name.compare("room") == 0) {
+	Room room(pNode);
+	//	all_rooms.insert(make_pair(room.name,room));
+	//aall_rooms.insert(make_pair(room.name,room));
+	//	cout << "Room name" <<room.name<<endl;
+	
+      }
+      
+
+
+    }
+
+
+
+  return 0;
+}
