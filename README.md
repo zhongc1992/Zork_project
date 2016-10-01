@@ -1,10 +1,12 @@
 C++ Project -- A Zork Game
 
+This description is tentative but is largely complete. It should be finalized by October 16, 2014. 
 For the first assignment we will be looking back to one of the first interactive fiction computer games called Zork, a text-based adventure game. You will design a simpler variant of this game which will be able to read as input an XML file with complete information of a specific adventure and create the set of objects to engage the player in that environment. <\p>
 
-example game
+example games
 
-http://iplayif.com/?story=http://www.ifarchive.org/if-archive/games/zcode/zdungeon.z5
+http://thcnet.net/error/index.php
+http://www.xs4all.nl/~pot/infocom/zork1.html
 You should write the program from scratch. The only code you can download from other sources is an XML parser. This specification is given "as is" If anything is incomplete, inconsistent, or incorrect, please explain your interpretation or improvement of the specification in the README.txt file you will turn in with the rest of your project. One of the purposes of this assignment is to provide an opportunity to learn how to handle an imperfect specification. If you are completely baffled talk to the TA about the project.
 
 Game Commands
@@ -84,5 +86,3 @@ The output correspnding to that input is here: RunThroughResults.txt.
 NOTE: in the RunThroughResults.txt file the ">" character is to depict input and should NOT be included in your project! It is for ease of reading only!!!>
 A sample pack for further testing: samplepack.zip.
 Submission
-
-Please submit your program through Blackboard. You should submit a .zip or .tar file which should expand into a directory with the name .. The directory should contain a Makefile that allows an executable to be biult on one of the standard lab machines.
